@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="icon" type="image/png" href="{ % static 'images/logo.png' % }" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>youDown</title>
+  </head>
+
+  <body class="bg-black">
+    {% include "navbar.html" %}
+
+    <!-- hero section -->
+
+    <div
+      class="hero rounded m-auto mt-4 bg-gradient-to-r from-violet-500 to-fuchsia-500"
+    >
+      <h1 class="text-center text-4xl font-bold pt-8 p-3">
+        Youtube Video & Audio Downloader
+      </h1>
+      <form method="get" action="download">
+        <div class="flex flex-wrap p-4 py-20 justify-center item-center w-full">
+          <div class="mx-3">
+            <input
+              placeholder="Paste link Here ..."
+              name="myurl"
+              required
+              class="border-slate-200 drop-shadow-2xl m-3 w-45 md:w-96 rounded text-xl p-2 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+            />
+          </div>
+          <div>
+            <button
+              class="py-2 m-3 px-4 drop-shadow-2xl bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 duration-500"
+              type="submit"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="flex flex-wrap justify-center">
+        
+        
+<div class="w-72 mx-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+  
+  <div class="p-5">
+      <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+      </a>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+     
+  </div>
+</div>
+
+        
+<div class="w-72 mx-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+ 
+  <div class="p-5">
+      <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+      </a>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+     
+  </div>
+</div>
+
+        
+<div class="w-72 mx-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+ 
+  <div class="p-5">
+      <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+      </a>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+     
+  </div>
+</div>
+
+      </div>
+
+      {% include "footer.html" %}
+    <!-- <div class="loader"></div> -->
+
+    <script src="{% static 'javaScript/app.js' %}"></script>
+  </body>
+</html>

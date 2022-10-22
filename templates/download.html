@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS only -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="icon" type="image/png" href="{ % static 'images/logo.png' % }" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>youDown</title>
+  </head>
+
+  <body class="bg-black">
+    {% include "navbar.html" %}
+
+    <!-- hero section -->
+
+    <div
+      class="hero rounded m-auto mt-4 bg-gradient-to-r from-violet-500 to-green-500"
+    >
+      <!-- <h1 class="text-center text-4xl font-bold pt-8 p-3">Youtube Video & Audio Downloader</h1> -->
+      <form method="get" action="download">
+        <div class="flex flex-wrap p-4 py-20 justify-center item-center w-full">
+          <div class="mx-3">
+            <input
+              placeholder="Paste link Here ..."
+              name="myurl"
+              required
+              class="border-slate-200 drop-shadow-2xl m-3 w-45 md:w-96 rounded text-xl p-2 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+            />
+          </div>
+          <div>
+            <button
+              class="py-2 m-3 px-4 drop-shadow-2xl bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 duration-500"
+              type="submit"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <h1 class="text-center text-white text-xl md:text-4xl font-bold p-3">
+      Download is ready...
+    </h1>
+    <img src="{{thum}}" class="m-auto w-36 md:w-60" alt="thumbnail" srcset="" />
+    <h1
+      class="text-center md:mx-48 text-white text-xl md:text-2xl font-bold p-3"
+    >
+      {{title}}
+    </h1>
+
+    <div class="overflow-x-auto px-auto relative ">
+      
+        <table
+          class="w-1/3 mt-4 m-auto px-auto text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" colspan="2" class="py-3 px-6">Video </th>
+              <th scope="col"  class="py-3 px-6">  Audio </th>
+              <!-- <th scope="col" class="py-3 px-6">
+                      
+                  </th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td colspan="2"></td>
+
+              <td class="py-4 px-6" rowspan="10">
+                
+                <form action="{% url 'my_project:downloaded_audio'%}" method="post">
+                  {% csrf_token %}
+                  <button
+                  class="py-1 px-3 drop-shadow-2xl bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 duration-500"
+                  type="submit"
+                  
+                  >
+                  Download Audio
+                </button>
+              </form>
+            </td>
+          </tr>
+            {% for i in res %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th
+                scope="row"
+                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {{i}}
+              </th>
+              <td class="py-4 px-6">
+                <form
+                  action="{% url 'my_project:downloaded' i %}"
+                  method="post"
+                >
+                  {% csrf_token %}
+                  <button
+                    class="py-1 px-3 drop-shadow-2xl bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 duration-500"
+                    type="submit"
+                  >
+                    Download
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+           
+          </tbody>
+        </table>
+      
+      <!-- <div>
+        <form action="{% url 'my_project:downloaded_audio'%}" method="post">
+          {% csrf_token %}
+          <button
+            class="py-1 px-3 drop-shadow-2xl bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 duration-500"
+            type="submit"
+          >
+            Download Audio
+          </button>
+        </form>
+      </div> -->
+    </div>
+    
+    {% include "footer.html" %}
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'javaScript/app.js' %}"></script>
+  </body>
+</html>
