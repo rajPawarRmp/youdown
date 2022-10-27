@@ -54,7 +54,9 @@ def downloaded(request,resolution):
 		title=yt.title
 		stream=yt.streams.filter(res=resolution).first()
 		data=stream.download(skip_existing=False)
+
 		path=os.path.normpath(data)
+		
 		with open(path,'rb') as f:
 			byteData=f.read()
 		os.remove(data)

@@ -9,11 +9,4 @@ function Menu(e) {
       list.classList.remove("opacity-100"));
 }
 
-window.addEventListener("load", () => {
-  const loader = document.queryselector(". loader ");
-  loader.classList.add("loader- hidden");
 
-  loader.addEventListener("transitionend", () => {
-    document.body.removeChild("loader");
-  });
-});
