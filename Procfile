@@ -1,1 +1,0 @@
-web: gunicorn youdown.wsgi --log-file -

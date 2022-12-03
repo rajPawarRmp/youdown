@@ -76,4 +76,4 @@ def downloaded_audio(request):
 			byteData=f.read()
 		os.remove(data)
 		return FileResponse(BytesIO(byteData),filename=title +' '+time+' youDown.mp3',as_attachment=True,content_type='audio/mpeg')
-		return redirect (request, "done.html")
+		# return redirect (request, "done.html")
