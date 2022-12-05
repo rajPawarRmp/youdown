@@ -56,7 +56,7 @@ def downloaded(request,resolution):
 				time = datetime.now().strftime("%H:%M")
 				title=yt.title
 				stream=yt.streams.filter(res=resolution).first()
-				data=stream.download(skip_existing=False)
+				data=stream.download()
 
 				path=os.path.normpath(data)
 				
@@ -74,7 +74,7 @@ def downloaded_audio(request):
 			time = datetime.now().strftime("%H:%M")
 			title=yt.title
 			stream=yt.streams.filter(only_audio=True).first()
-			data=stream.download(skip_existing=False)
+			data=stream.download()
 			path=os.path.normpath(data)
 			with open(path,'rb') as f:
 				byteData=f.read()
